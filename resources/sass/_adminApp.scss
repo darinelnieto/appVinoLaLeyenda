@@ -1,0 +1,329 @@
+//================================style header appAdmin============================
+.appAdmin{
+    overflow: hidden;
+}
+.headerAppAdmin{
+    background: white;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    .menu{
+        padding: 1.5% 2.2%;
+        width: 20%;
+        a{
+            color: #777;
+        }
+    }
+    .avatarMigas{
+        width: 80%;
+        a{
+            color:#4b0c14;
+        }
+        a:hover{
+            color:#4b0c14;
+            text-decoration: none;
+        }
+    }
+}
+.sesionMenu{
+    position: absolute;
+    background: white;
+    padding: 9px;
+    text-align: left;
+    right: -3%;
+    z-index: 100;
+    border: 0.5px solid #4b0c14;
+    top: 31px;
+    box-shadow: 0 0 13px -5px;
+    border-radius: 4px;
+    display: none;
+}
+.sesionMenu::before{
+    content: "";
+    display: block;
+    position: relative;
+    border-left: 0.5px solid #4b0c14;
+    border-top: 0.5px solid #4b0c14;
+    transform: rotate(45deg);
+    width: 10px;
+    height: 10px;
+    top: -15px;
+    background: white;
+    left: 45%;
+}
+.ulSesion{
+    list-style: none;
+    padding-left: 0;
+    position: relative;
+    top: -4px;
+    .Asesion{
+        color: #777 !important;
+    }
+    .Asesion:hover{
+        color: #4b0c14 !important;
+    }
+
+}
+//================================style body appAdmin==============================
+.contenedor{
+    display: flex;
+    background-color: #f0f0f0;
+}
+//===============================style panel lateral appAdmin======================
+.menuApp{
+    width: 20%;
+    text-align: center;
+    height: 93vh;
+    background: white;
+}
+.logoApp{
+    margin: 30px 0;
+}
+.imgLogoApp{
+    width: 100px;
+    height: auto;
+    margin: auto;
+}
+.ulControl{
+    list-style: none;
+    li a{
+        color: #777;
+        cursor: pointer;
+        display: flex;
+        margin-bottom: 14px;
+        font-weight: 600;
+        .nombre{
+            margin-left: 10px;
+        }
+    }
+    li a:hover{
+        color: #4b0c14;
+        text-decoration: none;
+    }
+}
+.ulInventario{
+    padding-left: 0;
+    list-style: none;
+    li a{
+        color: #777;
+    }
+    li a:hover{
+        color: #4b0c14;
+    }
+}
+table{
+    width: 100%;
+}
+//============================style contenido app====================
+.contieneContApp{
+    width: 80%;
+    padding: 0 23px;
+    .contenidoApp{
+        width: 100%;
+        background: transparent;
+        height: 80vh;
+        margin: 3% 0;
+    }
+}
+.dropdown-menu.show{
+    border:none !important;
+    position: relative !important;
+    transform: none !important;
+}
+.dropdown-toggle::after{
+    content:"";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border:none;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    transform: rotate(-45deg);
+    position: relative;
+    top: 4px;
+    left: 7px;
+}
+.nav-link:hover, .nav-link:focus, .nav-link.active, .dropdown-item.active, .dropdown-item.active, .dropdown-item:hover{
+    color: #4b0c14;
+    background-color: white;
+}
+.nav-item.dropdown.show{
+    .dropdown-toggle::after{
+        top: 9px;
+        border:none;
+        border-right: 1px solid;
+        border-top: 1px solid;
+    }
+}
+//=============================style partial user============================
+.headerAdminiUser{
+    display: flex;
+    justify-content: space-between;
+}
+.formSearch{
+    position: relative;
+    .searchUser{
+        width: 300px;
+        border: none;
+        outline: none;
+        height: 30px;
+        padding-left: 20px;
+        border-radius: 5px;
+    }
+    .searchUser::-webkit-input-placeholder{
+        color: #cacaca;
+    }
+    .btnSearch{
+        position: absolute;
+        background: transparent;
+        border: none;
+        color: #cacaca;
+        right: 2%;
+        top: 4px;
+        z-index: 100;
+    }
+}
+.AddMoreUserModal{
+    background: #2d9fd1;
+    border: 1px solid #2d9fd1;
+    color: white;
+    height: 35px;
+    width: 70px;
+    border-radius: 4px;
+    outline: none;
+    text-align: center;
+    padding: 2%;
+    font-size: 19px;
+}
+.AddMoreUserModal:hover, .AddMoreUserModal.active{
+    background: white;
+    color: #2d9fd1;
+}
+.modal-dialog{
+    margin: 1% auto;
+}
+.modal-content{
+    border-radius: 20px;
+}
+.form-control{
+    border-radius: 20px;
+    border:1px solid #4b0c14;
+    color: #4b0c14;
+    outline: none;
+    box-shadow: none;
+}
+.form-control:focus{
+    box-shadow: none !important;
+    border:1px solid #4b0c14;
+}
+.selectRegistre{
+    border-radius: 20px;
+    border:1px solid #4b0c14;
+    color: #4b0c14;
+    outline: none;
+    box-shadow: none;
+    height: 35px;
+    padding-left:2%;
+}
+.form-control::-webkit-input-placeholder, .selectRegistre::-webkit-input-placeholder{
+    color: #4b0c14;
+}
+.contenform{
+    background-image: url('/img/Fondo-formulario-02.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 600px;
+    padding: 8%;
+    border-radius: 20px;
+}
+.botinRegistro{
+    background:#ede1cb;
+    color: #4b0c14;
+    border: none;
+    border-radius: 20px;
+    height: 35px;
+    outline: none;
+    padding: 1% 10%;
+    font-weight: 600;
+}
+.botinRegistro:hover{
+    background:#4b0c14;
+    color:#ede1cb;
+}
+//=============================style table users==========================
+.TH{
+    background: white;
+    border: 1px solid #cacaca; 
+    p{
+        margin: 0 7px;
+    }
+}
+.nombreDB, .email, .telefono, .rol, .estado{
+    background: white;
+    border:1px solid #cacaca;
+    p{
+        margin: 3% 7px;
+    }
+}
+.botones{
+    background: white;
+    border:1px solid #cacaca;
+    .botonesAdminUser{
+        margin: 3% 20px;
+        .edita{
+            color: white;
+            background: #00a79b;
+            border:1px solid #00a79b;
+            border-radius: 2px;
+            padding-top: 2px;
+        }
+        .edita:hover{
+            background: white;
+            color: #00a79b;
+            border:1px solid #00a79b;
+        }
+        .elimina{
+            background: #bf272d;
+            color: white;
+            border: 1px solid #bf272d;
+            border-radius: 2px;
+            padding-top: 2px;
+        }
+        .elimina:hover{
+            background: white;
+            color:#bf272d;
+        }
+    }
+}
+.password{
+    background: white;
+    border:1px solid #cacaca;
+    .pPassword{
+        width: 200px;
+        overflow: hidden;
+        margin: 3%;
+    }
+}
+#modalMensaje{
+    display: block;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, .5);
+    z-index: 100;
+}
+#mensajeErrorDos{
+    background: #fff0f4;
+    border-top: 2px solid #c81f4f;
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    border-radius: 0 0 5px 5px;
+}
+.closeForm{
+    color:#777;
+}

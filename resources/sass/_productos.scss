@@ -1,0 +1,226 @@
+//========================================Style Product=====================================
+@font-face {
+    font-family: "code";
+    src: url('/css/code128.ttf');
+}
+.fondoVinoForm{
+    background:white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 16px -3px;
+    padding: 1%;
+    display: none;
+}
+.formAddProduct{
+    background-image: url(/img/img-fondo-form-03.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    .formularioProducto{
+        width: 60%;
+        padding-left: 2%;
+        .form-group{
+            display:flex;
+            justify-content:space-between;
+        }
+    }
+    .muestra{
+        width: 40%;
+    }
+    .inputProduct, .file, .texAreaProduct{
+        width: 58.5%;
+    }
+}
+.addMoreCode{
+    background: #00a79b;
+    border:1px solid #00a79b;
+    .fa-barcode{
+        font-size: 31px;
+    }
+}
+#ModalCode{
+    margin: 19% auto;
+    .code{
+        font-family: 'code';
+        font-size: 40px;
+        display: block;
+    }
+}
+.AddMoreCode{
+    background: #2d9fd1;
+    border:1px solid #2d9fd1;
+    color:white;
+    padding: 4px 26px 5px 26px;
+    border-radius: 5px;
+    .fa-barcode{
+        font-size:20px !important;
+    }
+}
+.AddMoreProduct{
+    background: #2d9fd1;
+    border:1px solid #2d9fd1;
+    color:white;
+    padding: 7px 26px;
+    border-radius: 5px;
+    .fa-archive{
+        font-size:20px !important;
+    }
+}
+.AddMoreCode:hover, .AddMoreProduct:hover, .cosedModalCode:hover, .buttonSubmitProductForm:hover{
+    background: white;
+    border:1px solid #2d9fd1;
+    color:#2d9fd1;
+    text-decoration: none;
+}
+.codeModal{
+    align-items: center;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin: auto;
+}
+.cosedModalCode{
+    background: #2d9fd1;
+    border:1px solid #2d9fd1;
+    color:white;
+    padding: 7px 26px;
+    border-radius: 5px;
+}
+.buttonSubmitProductForm{
+    background: #2d9fd1;
+    border:1px solid #2d9fd1;
+    color:white;
+    padding: 1% 8%;
+    border-radius: 4px;
+}
+.cancelar{
+    background:#bf272d;
+    border:1px solid #bf272d;
+    color:white;
+    padding: 7px 8%;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+.cancelar:hover{
+    background:white;
+    border:1px solid #bf272d;
+    color:#bf272d;
+    text-decoration: none;
+}
+.tHead{
+    background: white;
+    border-top:1px solid #cacaca;
+    border-bottom:1px solid #cacaca;
+    padding: .5% 1%;
+    p{
+        margin-bottom: 0;
+    }
+} 
+.tbody{
+    background: white;
+    border-top:1px solid #cacaca;
+    border-bottom:1px solid #cacaca;
+    padding: 1%;
+    p{
+        margin-bottom: 0;
+    }
+}
+.botonesProduct{
+    display: flex;
+    justify-content: center;
+    .edita{
+        color: white;
+        background: #00a79b;
+        border: 1px solid #00a79b;
+        border-radius: 2px;
+        padding-top: 2px;
+    }
+    .edita:hover{
+        background: white;
+        color: #00a79b;
+    }
+    .elimina{
+        background: #bf272d;
+        color: white;
+        border: 1px solid #bf272d;
+        border-radius: 2px;
+        padding: 2px 7px 1px 7px;
+        margin-left: 7px;
+    }
+    .elimina:hover{
+        color:#bf272d;
+        background: white;
+    }
+}
+.FormEdicion{
+    display: flex;
+    justify-content: space-between;
+    .texAreaProduct, .inputProduct{
+        width: 62%;
+    }
+}
+#modalCodeEscaner{
+    display:none;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, .5);
+    z-index: 100;
+}
+#codigoEscaneado{
+    border:1px solid #00a79b;
+    padding-left: 20px;
+}
+#codigoEscaneado::-webkit-input-placeholder{
+    color:#00a79b;
+}
+.pagination{
+    justify-content: flex-end;
+}
+#mensajeExito{
+    background: #f1fcfc;
+    border-top:1px solid #00b3af;
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    text-align: center;
+    padding: .4%;
+    border-radius: 0 0 5px 5px;
+    p{
+        color:#00b3af;
+        font-weight: 500;
+    }
+}
+#mensajeError{
+    background: #fff0f4;
+    border-top: 2px solid #c81f4f;
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    border-radius: 0 0 5px 5px;
+    p{
+        color:#c81f4f;
+        font-weight: 500;
+    }
+}
+//=========================Style Code print=============================
+.codigo{
+    font-family: 'code';
+    font-size: 40px;
+    margin-bottom: 0;
+}
+
+.codeTable{
+    background: white;
+    border-top:1px solid #cacaca;
+    border-bottom:1px solid #cacaca;
+    padding: 0 10px;
+}
+#btnImprime{
+    background: #222;
+    padding: 11% 16%;
+    color: white;
+    border-radius: 3px;
+}

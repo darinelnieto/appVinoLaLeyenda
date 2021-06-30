@@ -1,0 +1,265 @@
+html{
+    scroll-behavior: smooth;
+}
+.body{
+    background: #ede1cb;
+}
+.header{
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+}
+.headerRow{
+    align-items: center;
+    padding: 1.5% 0;
+}
+.loginRedirect{
+    color:white;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 2% 10%;
+}
+.loginRedirect:hover{
+    color: #4b0c14;
+    background: white;
+    text-decoration: none;
+    border:1px solid #4b0c14;
+}
+.nav-bar{
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    .nav-link{
+        color:white;
+    }
+}
+.item{
+    display: block;
+}
+.fondoBanner{
+    width: 100%;
+    position: absolute;
+    bottom: -1px;
+    z-index: 100;
+}
+.owl-prev{
+    position: absolute;
+    z-index: 100;
+    top: 30%;
+    left: 2%;
+    color: white !important;
+    font-size: 50px !important;
+    outline: none;
+}
+.owl-next{
+    position: absolute;
+    top: 30%;
+    z-index: 100;
+    right: 2%;
+    color: white !important;
+    font-size: 50px !important;
+    outline: none;
+}
+/*--------------------style seccion somos---------------------*/
+#somos{
+    display: flex;
+}
+.imgIsquierdaSomos{
+    width: 20%;
+    img{
+        position: relative;
+        top: 60%;
+    }
+}
+.informacionSomos{
+    width: 60%;
+.tituloSomos{
+    color: #4b0c14;
+}
+.parrafoSomos{
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 0;
+}
+}
+.imgDerechaSomos{
+    width: 20%;
+}
+@media(max-width:882px){
+    .parrafoSomos{
+        font-size: 16px !important;
+    }
+    .imgIsquierdaSomos img{
+        top:62%;
+    }
+}
+/*-------------------style banner central------------------*/
+.contenidoBannerCentral{
+    display:flex;
+    align-items: flex-end;
+    margin-top: 10% !important;
+    .izquierdaBannerCentral, .derechaBannerCentro{
+        width: 50%;
+    }
+    .izquierdaBannerCentral img{
+        transform: translateX(-3px);
+    }
+}
+.tituloProducto{
+    color: #4b0c14;
+    font-size: 20px;
+    font-weight: 700;
+}
+.infoBannerCentro{
+    font-size: 20px;
+}
+.botonBannerVerProducto{
+    color:#4b0c14;
+    border:1px solid #4b0c14;
+    border-radius: 20px;
+    padding: 1% 7%;
+}
+.botonBannerVerProducto:hover{
+    background: #4b0c14;
+    color: white;
+    border:1px solid white;
+    text-decoration: none;
+}
+@media(max-width:640px){
+    .infoBannerCentro{
+        font-size: 10px;
+    }
+    .tituloProducto{
+        font-size: 15px;
+    }
+}
+/*---------------------style video--------------------------*/
+.contieneVideo{
+    align-items: center;
+}
+.tituloPrincipalSeccionVideo{
+    color: #4b0c14;
+    font-weight: 700;
+}
+.tituloSeccionVideo{
+    font-style: italic;
+    color: #4b0c14;
+    font-weight: 500;
+}
+.informacionVideo{
+    font-size: 20px;
+}
+@media(max-width:640px){
+    .informacionVideo{
+        font-size: 16px;
+    }
+}
+/*----------------------style ubicacion--------------------*/
+.tituloUbicacion{
+    color: #4b0c14;
+    font-weight: 700;
+}
+.infoUbicacion{
+    font-size: 20px;
+}
+.movil{
+    display:none;
+}
+.alineaContenido{
+    align-items: center;
+}
+@media(max-width:640px){
+    .infoUbicacion{
+        font-size: 16px;
+    }
+    .movil{
+        display: block;
+    }
+    .pc{
+        display: none;
+    }
+}
+/*--------------- style footer -----------------*/
+footer{
+    position: relative;
+    background: #ede1cb;
+}
+.copyRight{
+    background: #4b0c14;
+    height: 50px;
+}
+.contenCopyR{
+    position: relative;
+}
+.copyR{
+    color:white;
+}
+.botellaVino{
+    position: absolute;
+    right: 3%;
+    bottom: 7%;
+    width: 4%;
+    .imgCopy{
+        width: 100%;
+    }
+}
+@media(max-width:799px){
+    .botellaVino{
+        position: absolute;
+        right: 0;
+        bottom: 7%;
+        width: 12%;
+        .imgCopy{
+            width: 60%;
+        }
+    }
+}
+.logoVino{
+    width: 60%;
+    margin: auto;
+    border-radius: 50%;
+    box-shadow: 0 0 14px -5px;
+}
+.pFooter{
+    color:#4b0c14;
+    font-weight: 500;
+    font-size: 18px;
+}
+.footerBlanco{
+    color:#4b0c14;
+    font-weight: 700;
+    font-size: 18px;
+}
+.footerBlanco:hover{
+    color:#4b0c14;
+}
+.contenlinksFooter{
+    display: flex;
+    justify-content: flex-end;
+}
+.linkRedesFooter{
+    width:30px;
+    height: 30px;
+    border:1px solid #4b0c14;
+    border-radius: 50%;
+    text-align: center;
+    padding: 4px;
+    margin: 0 4px;
+    a{
+        color:#4b0c14;
+    }
+    a:hover{
+        color:#4b0c14;
+    }
+}
+@media(max-width:799px){
+    .contenlinksFooter{
+        justify-content: center;
+    }
+}
+@media(max-width:680px){
+    .botellaVino{
+        display:none;
+    }
+}
