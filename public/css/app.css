@@ -12027,6 +12027,10 @@ table {
   border-radius: 3px;
 }
 
+.bodyVenta {
+  background: #ebebeb;
+}
+
 .headerVendedorPV {
   background: white;
   height: 45px;
@@ -12040,7 +12044,90 @@ table {
   box-shadow: 0 0 12px -3px;
 }
 
-.contenido .tbodyVentas {
+.contenido .contentTbody {
+  height: 435px;
+}
+
+.contenido .contentTbody .tbodyVentas {
   border: 2px solid #c2cfd7;
+  height: 395px;
+  overflow-y: scroll;
+  position: absolute;
+  width: 97.4%;
+}
+
+.contenido .contentTbody .tbodyVentas tr {
+  width: 100% !important;
+}
+
+.btnCotrolaTabla {
+  text-align: right;
+  width: 80%;
+  margin-top: 1.7%;
+}
+
+.btnCotrolaTabla .cancelarVenta {
+  background: #c1272d;
+  border: 1px solid #c1272d;
+  color: white;
+  font-weight: 700;
+  padding: 0.8% 3%;
+  height: 37px;
+  border-radius: 4px;
+}
+
+.btnCotrolaTabla .cancelarVenta:hover {
+  background: white;
+  color: #c1272d;
+  text-decoration: none;
+}
+
+.btnCotrolaTabla .botonFinalizaCompra {
+  background: #29abe2;
+  border: 1px solid #29abe2;
+  color: white;
+  font-weight: 700;
+  padding: 0.8% 3%;
+  height: 37px;
+  border-radius: 4px;
+  margin: 0 40px 0 20px;
+}
+
+.btnCotrolaTabla .botonFinalizaCompra:hover {
+  background: white;
+  color: #29abe2;
+  text-decoration: none;
+}
+
+.tfooter {
+  margin-top: 1.7%;
+}
+
+.select {
+  display: flex;
+  align-items: center;
+}
+
+.selectorMetodo {
+  height: 30px;
+  padding: 0 15px;
+}
+
+.okSelert {
+  background: #00a99d;
+  color: white;
+  height: 30px;
+  width: 50px;
+  margin-left: 20px;
+  border: 1px solid #00a99d;
+  border-radius: 4px;
+}
+
+.formControlador {
+  display: flex;
+}
+
+.pieTabla {
+  display: none;
 }
 

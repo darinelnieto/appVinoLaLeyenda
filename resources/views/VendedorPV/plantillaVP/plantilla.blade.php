@@ -8,7 +8,7 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css" />
     <title>Document</title>
 </head>
-<body>
+<body class="bodyVenta">
     <header class="headerVendedorPV">
         <div class="container">
             <div class="row">
