@@ -47,6 +47,8 @@ Route::post('product/elimina', 'ProductController@destroy')->name('product.elimi
 
 Route::get('api/productos', 'ProductController@busqueda')->name('api.productos');
 
+Route::get('api/product/name', 'ProductController@busquedaNombre')->name('productos.nombre');
+
 Route::get('auth/register', 'HomeController@registro')->name('register');
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

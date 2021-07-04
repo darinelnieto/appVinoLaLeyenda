@@ -33,7 +33,7 @@ function datosStorage(){
                 </td>
                 <td width="13%" class="text-left pl-5">${item.price}</td>
                 <td class="total text-left pl-5" width="13%"></td>
-                <td width="20%" class="text-center"><a href="#" class="delet">Delet</a></td>
+                <td width="20%" class="text-center"><a href="#" class="btn btn-danger delet"><i class="far fa-trash-alt"></i></a></td>
             </tr>
         `;
         delet();
@@ -94,10 +94,59 @@ function condicion(){
     if(valorSelect === 'escanner'){
         $('.listProduct').css({'display':'block'});
         $('.listProduct').select();
+        $('#modalBuquedaNombre').css({
+            'display':'none'
+        }).removeClass('show');
     }else{
         $('.listProduct').css({'display':'none'});
+        $('#modalBuquedaNombre').css({
+            'display':'block',
+            'background':'rgba(0,0,0,.5)'
+        }).addClass('show');
     }
 }
 function controllerVenta(){
     $('.pieTabla').css({'display':'flex'});
+}
+// busqueda de productos por nombre 
+$('.searchNameProduct').on('submit', function(e){
+    var nombre = $('.nameSearch').val();
+    $.ajax({
+        type:'GET',
+        url:"api/product/name",
+        data:{ name:nombre },
+    }).done(function(res){
+        var dataStore = JSON.stringify(res);
+        localStorage.setItem('skuProduct', dataStore);
+        recibeProduct();
+    });
+    $('.searchNameProduct')[0].reset();
+    e.preventDefault();
+});
+function recibeProduct(){
+    var dataStorageRecibida = localStorage.getItem('skuProduct');
+    var jsonStorageData = JSON.parse(dataStorageRecibida);
+    for(product of jsonStorageData){
+        $('.ProductRespuesta').html(`
+        <tr>
+            <td><img src="storage/${product.image}" alt="${product.name}" width="50px" heigth="65px"></td>
+            <td>${product.sku}</td>
+            <td>${product.name}</td>
+            <td>${product.price}</td>
+            <td>${product.stock}</td>
+            <td><a href="#" class="addProduct"><i class="fas fa-shopping-cart"></i></a></td>
+        </tr>
+    `);
+    }
+    agregaProductEncontrado();
+}
+function agregaProductEncontrado(){
+    $('.addProduct').on('click', function(e){
+        datosStorage();
+        $('#modalBuquedaNombre').css({
+            'display':'none'
+        }).removeClass('show');
+        $('.ProductRespuesta').children().remove();
+        e.preventDefault();
+    });
 }

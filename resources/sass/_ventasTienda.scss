@@ -6,6 +6,13 @@
     height: 45px;
     padding: .6%;
 }
+.formSearchProductVenta{
+    margin-left:140px;
+    .listProduct{
+        border:none;
+        outline:none;
+    }
+}
 .contenido{
     background: white;
     width: 100%;
@@ -21,6 +28,14 @@
             width: 97.4%;
             tr{
                 width: 100% !important;
+            }
+            .delet{
+                background: #c1272d;
+                border: 1px solid #c1272d;
+            }
+            .delet:hover{
+                background: white;
+                color:#c1272d;
             }
         }
     }
@@ -42,6 +57,7 @@
         background: white;
         color: #c1272d;
         text-decoration: none;
+        transition:color 0.15s ease-in-out, background-color .3s ease-in-out;
     }
     .botonFinalizaCompra{
         background: #29abe2;
@@ -57,6 +73,7 @@
         background: white;
         color:#29abe2;
         text-decoration: none;
+        transition:color 0.15s ease-in-out, background-color .3s ease-in-out;
     }
 }
 .tfooter{
@@ -69,6 +86,15 @@
 .selectorMetodo{
     height: 30px;
     padding: 0 15px;
+    border:1px solid #c2cfd7;
+    outline: none;
+    
+}
+.optionsMethod:checked{
+    background: #d5e1e9 !important;
+}
+.optionsMethod:hover{
+    background-color: transparent !important;
 }
 .okSelert{
     background:#00a99d;
@@ -84,4 +110,43 @@
 }
 .pieTabla{
     display: none;
+}
+.finCompra{
+    margin: 18% auto;
+}
+.botonesMetodoPago{
+    display: flex;
+    justify-content: space-around;
+}
+// buscador por nombre de producto
+.searcModalProductVenta{
+    background: transparent;
+    color:#c2cfd7;
+    border:none;
+    outline: none;
+    border:1px solid #c2cfd7;
+    border-radius: 0 4px 4px 0;
+    position: relative;
+    left: -5px;
+    top: -1px;
+    height: 35px;
+    width: 40px;
+}
+.nameSearch{
+    width: 60%;
+    height: 35px;
+    border:1px solid #c2cfd7;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+    padding-left: 20px;
+    color:#c2cfd7;
+}
+.nameSearch::-webkit-input-placeholder{
+    color:#c2cfd7;
+}
+.busquedaNombre{
+    margin: 14% 25%;
+}
+.modalBusquedaNombre{
+    width: 700px;
 }

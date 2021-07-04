@@ -12037,6 +12037,15 @@ table {
   padding: 0.6%;
 }
 
+.formSearchProductVenta {
+  margin-left: 140px;
+}
+
+.formSearchProductVenta .listProduct {
+  border: none;
+  outline: none;
+}
+
 .contenido {
   background: white;
   width: 100%;
@@ -12060,6 +12069,16 @@ table {
   width: 100% !important;
 }
 
+.contenido .contentTbody .tbodyVentas .delet {
+  background: #c1272d;
+  border: 1px solid #c1272d;
+}
+
+.contenido .contentTbody .tbodyVentas .delet:hover {
+  background: white;
+  color: #c1272d;
+}
+
 .btnCotrolaTabla {
   text-align: right;
   width: 80%;
@@ -12080,6 +12099,7 @@ table {
   background: white;
   color: #c1272d;
   text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .btnCotrolaTabla .botonFinalizaCompra {
@@ -12097,6 +12117,7 @@ table {
   background: white;
   color: #29abe2;
   text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .tfooter {
@@ -12111,6 +12132,16 @@ table {
 .selectorMetodo {
   height: 30px;
   padding: 0 15px;
+  border: 1px solid #c2cfd7;
+  outline: none;
+}
+
+.optionsMethod:checked {
+  background: #d5e1e9 !important;
+}
+
+.optionsMethod:hover {
+  background-color: transparent !important;
 }
 
 .okSelert {
@@ -12129,5 +12160,50 @@ table {
 
 .pieTabla {
   display: none;
+}
+
+.finCompra {
+  margin: 18% auto;
+}
+
+.botonesMetodoPago {
+  display: flex;
+  justify-content: space-around;
+}
+
+.searcModalProductVenta {
+  background: transparent;
+  color: #c2cfd7;
+  border: none;
+  outline: none;
+  border: 1px solid #c2cfd7;
+  border-radius: 0 4px 4px 0;
+  position: relative;
+  left: -5px;
+  top: -1px;
+  height: 35px;
+  width: 40px;
+}
+
+.nameSearch {
+  width: 60%;
+  height: 35px;
+  border: 1px solid #c2cfd7;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  padding-left: 20px;
+  color: #c2cfd7;
+}
+
+.nameSearch::-webkit-input-placeholder {
+  color: #c2cfd7;
+}
+
+.busquedaNombre {
+  margin: 14% 25%;
+}
+
+.modalBusquedaNombre {
+  width: 700px;
 }
 

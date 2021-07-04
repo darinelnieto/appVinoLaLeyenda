@@ -79,4 +79,10 @@ class ProductController extends Controller
             return response()->json($producto);
         }
     }
+    public function busquedaNombre(Request $request){
+        if($request->ajax()){
+            $productName = Product::where('name', $request->name)->get();
+            return response()->json($productName);
+        }
+    }
 }

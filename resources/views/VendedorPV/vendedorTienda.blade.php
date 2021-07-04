@@ -7,8 +7,8 @@
                 <form class="select">
                     <div class="selert">
                         <select name="selecciona" class="selectorMetodo">
-                            <option value="escanner">Escaner</option>
-                            <option value="nombre de producto">Buscar por nombre de producto</option>
+                            <option value="escanner" class="optionsMethod">Escaner</option>
+                            <option value="nombre de producto" class="optionsMethod">Buscar por nombre de producto</option>
                         </select>
                     </div>
                     <div class="botonSelert">
@@ -21,6 +21,7 @@
                     <input type="tel" name="sku" class="listProduct">
                 </form>
             </div>
+            @include('VendedorPV.plantillaVP.busquedaPorNombre')
             <div class="contentTbody mt-2">
                 <table>
                     <thead>
@@ -41,9 +42,10 @@
             <div class="pieTabla">
                 <div class="btnCotrolaTabla">
                     <a href="#" class="cancelarVenta">Cancelar vanta</a>
-                    <a href="#" class="botonFinalizaCompra">Finalizar compra</a>
+                    <a href="#" class="botonFinalizaCompra" data-toggle="modal" data-target="#modalFinCompra">Finalizar compra</a>
                 </div>
                 <div class="tfooter"></div>
+                @include('VendedorPV.plantillaVP.finalizaVentaEfectivo')
             </div>
         </div>
     </div>
