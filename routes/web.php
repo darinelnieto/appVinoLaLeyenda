@@ -43,6 +43,8 @@ Route::post('/listaProductos', 'ProductController@create')->name('product.create
 
 Route::post('Edit/product', 'ProductController@edit')->name('edit.product');
 
+Route::post('decuenta/{id}&{cantidad}', 'ProductController@descuenta')->name('descuenta.stock');
+
 Route::post('product/elimina', 'ProductController@destroy')->name('product.elimina');
 
 Route::get('api/productos', 'ProductController@busqueda')->name('api.productos');

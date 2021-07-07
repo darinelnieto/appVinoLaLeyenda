@@ -4,6 +4,8 @@ $('.sesion').on('click', function(e){
 });
 // ellemento donde cargan los productos enlistados con jquery
 var tbody = document.getElementById('muestraProductos');
+var DBdatos = document.getElementById('dbForm');
+var imprime = document.getElementById('datos');
 
 // función ajax para pedir y mostrar datos de los productos que se pretende vender 
 $('.formSearchProductVenta').on('submit', function(e){
@@ -25,7 +27,7 @@ function datosStorage(){
     const dataJson = JSON.parse(datosLocal);
     for(item of dataJson){
         tbody.innerHTML+=`
-            <tr class="${item.id}">
+            <tr class="${item.id}" style="height:47px;">
                 <td width="40%" class="pl-3">${item.name}</td>
                 <td width="20%">${item.sku}</td>
                 <td class="formilario${item.sku} text-center" width="6%"><form class="editaCount${item.id}">
@@ -42,6 +44,15 @@ function datosStorage(){
     total();
     operation();
     controllerVenta();
+    finalizaventa();
+}
+// finaliza venta
+function finalizaventa(){
+    venta = $('.sales'+item.id).val();
+    totalCantidad = item.stock - venta;
+    $('.stock'+item.id).val(totalCantidad);
+    $('.confirmaVenta').on('click', function(){
+    });
 }
 function total(){
     var precioTotal = $('.valor'+item.sku).val();
@@ -58,11 +69,18 @@ function operation(){
         $('.tfooter').html(`<tr>
             <td class="pl-4"><strong>Total = $ ${totalPrice}</strong></td>
         </tr>`);
-        console.log(totalPrice);
+        $('.totalVenta').html(`$ ${totalPrice}`);
         if(totalPrice === undefined){
             $('.pieTabla').css({'display':'none'});
         }
+        $('.efectivo').on('submit', function(e){
+            var cantidad = $('.cantidadPago').val();
+            var vueltas = cantidad - totalPrice;
+            $('.vuelto').html(`$ ${vueltas}`);
+            e.preventDefault();
+        });
 }
+
 // aumentando las cantidades de los productos
 function aumenta(){
     $(this, '.editaCount'+item.id).on('submit', function(e){
@@ -70,9 +88,11 @@ function aumenta(){
         localStorage.setItem('cantidad'+item.id, cantidad);
         var valor = localStorage.getItem('cantidad'+item.id);
         $('.valor'+item.sku).replaceWith(`<input type="number" name="sales" class="valor${item.sku}" style="width:100%" value="${valor}">`);
+        $('.sales'+item.id).replaceWith(`<input type="hidden" name="sales" value="${valor}" class="sales${item.id}">`);
         total();
         e.preventDefault();
         operation();
+        finalizaventa();
     });
 }
 function delet(){
@@ -150,3 +170,10 @@ function agregaProductEncontrado(){
         e.preventDefault();
     });
 }
+// finalizar venta
+$('.efectivo').on('click', function(){
+    $('.contentFormFinalVenta').css({'display':'block'}).draggable({cancel: '.contentForm'});
+});
+$('.cierreLink').on('click', function(e){
+    $('.contentFormFinalVenta').css({'display':'none'});
+});
