@@ -1,3 +1,6 @@
+.venta{
+    overflow: hidden;
+}
 .bodyVenta{
     background: #ebebeb;
 }
@@ -149,4 +152,54 @@
 }
 .modalBusquedaNombre{
     width: 700px;
+}
+.contentFormFinalVenta{
+    display: none;
+    background: #ebebeb;
+    padding: 0 10px 10px 10px;
+    width: 700px;
+    height: 400px;
+    .contentForm{
+        background: white;
+        height: 370px;
+        .fondo{
+            background-image: url(/img/img-fondo-form-03.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100%;
+            background-position: center;
+            padding: 8% 15%;
+        }
+    }
+}
+.cierreLink{
+    background: #c1272d;
+    padding: 1px 12px;
+    color: white;
+    text-decoration: none;
+    position: relative;
+    right: -10px;
+    &:hover{
+        text-decoration: none;
+        color: white;
+    }
+}
+.cantidadPago{
+    width: 90px;
+    border: 1px solid #c2cfd7;
+    background: #e6e6e6;
+}
+.fondo> table tr{
+    display: flex;
+    justify-content: space-between;
+    height: 45px;
+    .vuelto{
+        width:104px
+    }
+    .totalVenta{
+        width: 103px;
+    }
+}
+.enviaDB{
+    display: none;
 }

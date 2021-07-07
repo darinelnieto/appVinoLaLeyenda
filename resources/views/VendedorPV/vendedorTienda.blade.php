@@ -34,7 +34,7 @@
                             <td width="20%"></td>
                         </tr>
                     </thead>
-                    <tbody class="tbodyVentas" id="muestraProductos">
+                    <tbody class="tbodyVentas pt-3 pb-2" id="muestraProductos">
                     
                     </tbody>
                 </table>
@@ -47,7 +47,10 @@
                 <div class="tfooter"></div>
                 @include('VendedorPV.plantillaVP.finalizaVentaEfectivo')
             </div>
+            @include('VendedorPV.plantillaVP.formFinalVenta')
         </div>
     </div>
 </div>
+<div id="dbForm"></div>
+<div id="datos"></div>
 @endsection
