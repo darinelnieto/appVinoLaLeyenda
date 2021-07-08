@@ -89,9 +89,9 @@
                         @endforeach
                         </tbody>
                     </table>
-                </div>
-                <div class="paginador mt-3">
-                    {{$productos->links()}}
+                    <div class="paginador mt-3">
+                        {{$productos->links()}}
+                    </div>
                 </div>
             </div>
         </div>

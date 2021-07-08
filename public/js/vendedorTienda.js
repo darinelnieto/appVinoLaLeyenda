@@ -177,3 +177,10 @@ $('.efectivo').on('click', function(){
 $('.cierreLink').on('click', function(e){
     $('.contentFormFinalVenta').css({'display':'none'});
 });
+// cancelar venta
+$('.cancelarVenta').on('click', function(e){
+    $('.tbodyVentas').children().remove();
+    $(this).parent().parent().css({'display':'none'});
+    localStorage.clear();
+    e.preventDefault();
+})

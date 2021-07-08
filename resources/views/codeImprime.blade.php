@@ -1,5 +1,21 @@
 @extends('adiminstrador.plantilla.plantillaApp')
 @section('mainAdmin')
+<style>
+    @font-face {
+        font-family: "code";
+        src: url('/css/code128.ttf');
+    }
+    .codigo{
+        font-family: 'code';
+        font-size: 40px;
+        margin-bottom: 0;
+    }
+    @media print{
+        .codigo{
+            font-size: 80px;
+        }
+    }
+</style>
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -30,7 +46,7 @@
                             <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
                             <script>
                                 $('.imprime{{$codigo->sku}}').click(function(e){
-                                    $.print('.code{{$codigo->sku}}');
+                                    $('.code{{$codigo->sku}}').print();
                                     e.preventDefault();
                                 });
                             </script>
