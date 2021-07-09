@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('decuenta/stock', 'ProductController@descuenta')->name('descuenta.stock');
+Route::get('api/productos/busqueda', 'ProductController@busqueda')->name('api.productos');

@@ -45,8 +45,6 @@ Route::post('Edit/product', 'ProductController@edit')->name('edit.product');
 
 Route::post('product/elimina', 'ProductController@destroy')->name('product.elimina');
 
-Route::get('api/productos', 'ProductController@busqueda')->name('api.productos');
-
 Route::get('api/product/name', 'ProductController@busquedaNombre')->name('productos.nombre');
 
 Route::get('auth/register', 'HomeController@registro')->name('register');
