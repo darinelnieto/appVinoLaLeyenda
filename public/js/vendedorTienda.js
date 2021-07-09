@@ -41,7 +41,6 @@ function datosStorage(){
         delet();
     }
     aumenta();
-    total();
     operation();
     controllerVenta();
     finalizaventa();
