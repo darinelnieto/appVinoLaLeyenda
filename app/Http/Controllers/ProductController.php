@@ -10,9 +10,9 @@ use App\paginate;
 
 class ProductController extends Controller
 {
-    
+
     public function index()
-    {   
+    {
         $productos = DB::table('products')->paginate(5);
         return view('listaProductos', compact('productos'));
     }
@@ -54,7 +54,7 @@ class ProductController extends Controller
             $edita->image = $request->file('image')->store('products', 'public');
             $edita->save();
         }
-        
+
         return redirect()->back();
     }
 
@@ -79,6 +79,7 @@ class ProductController extends Controller
             return response()->json($producto);
         }
     }
+
     public function busquedaNombre(Request $request){
         if($request->ajax()){
             $productName = Product::where('name', $request->name)->get();
