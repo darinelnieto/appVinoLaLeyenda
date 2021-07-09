@@ -86,11 +86,11 @@ class ProductController extends Controller
         }
     }
 
-    public function descuenta($id, $cantidad){
-        $descuenta = Product::find($id);
-        $descuenta->stock = $descuenta->stock - $cantidad;
-        $descuenta->sales = $descuenta->sales + $cantidad;
-        $descuenta->save();
-        return redirect()->back();
+    public function descuenta(Request $request){    
+        if($request->ajax()){
+            $descuenta = Product::find($request['sku']);
+            $descuenta->sales = $request['sales'];
+            $descuenta->save();
+        }
     }
 }

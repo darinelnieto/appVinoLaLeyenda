@@ -17,6 +17,9 @@ $('.formSearchProductVenta').on('submit', function(e){
      }).done(function(res){
          var datos = JSON.stringify(res);
         localStorage.setItem('skuProduct', datos);
+        localStorage.setItem('id'+res[0]['id'], res[0]['sku']);
+        var recuperado = localStorage.getItem('id'+res[0]['id']);
+        enviaDataLocalStorage(recuperado);
         datosStorage();
      });
      $('.formSearchProductVenta')[0].reset();
@@ -31,6 +34,7 @@ function datosStorage(){
                 <td width="40%" class="pl-3">${item.name}</td>
                 <td width="20%">${item.sku}</td>
                 <td class="formilario${item.sku} text-center" width="6%"><form class="editaCount${item.id}">
+                    
                     <input type="number" name="sales" class="valor${item.sku}" style="width:100%" value="1">
                 </td>
                 <td width="13%" class="text-left pl-5">${item.price}</td>
@@ -40,6 +44,7 @@ function datosStorage(){
         `;
         delet();
     }
+    total();
     aumenta();
     operation();
     controllerVenta();
@@ -87,8 +92,9 @@ function aumenta(){
         localStorage.setItem('cantidad'+item.id, cantidad);
         var valor = localStorage.getItem('cantidad'+item.id);
         $('.valor'+item.sku).replaceWith(`<input type="number" name="sales" class="valor${item.sku}" style="width:100%" value="${valor}">`);
-        $('.sales'+item.id).replaceWith(`<input type="hidden" name="sales" value="${valor}" class="sales${item.id}">`);
         total();
+        aumentado = $('.editaCount'+item.id).children().val();
+        enviaDataLocalStorage(aumentado);
         e.preventDefault();
         operation();
         finalizaventa();
@@ -176,10 +182,25 @@ $('.efectivo').on('click', function(){
 $('.cierreLink').on('click', function(e){
     $('.contentFormFinalVenta').css({'display':'none'});
 });
+function enviaDataLocalStorage(recuperado, aumentado){
+    if(aumentado === undefined){
+        aumentado = 1;
+    }
+    $.ajax({
+        method:'post',
+        url: 'decuenta/stock',
+        dataType:'json',
+        data:{
+            _token: $("meta[name='csrf-token']").attr("content"),
+            sku:recuperado, 
+            sales:aumentado
+        }
+    });
+}
 // cancelar venta
 $('.cancelarVenta').on('click', function(e){
     $('.tbodyVentas').children().remove();
     $(this).parent().parent().css({'display':'none'});
     localStorage.clear();
     e.preventDefault();
-})
+});
