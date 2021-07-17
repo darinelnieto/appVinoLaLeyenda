@@ -13,8 +13,8 @@
     <header class="headerVendedorPV">
         <div class="container">
             <div class="row">
-                <div class="col-12 text-right">
-                    <a href="" class="sesion">{{ Auth::user()->name }}</a>
+                <div class="col-12 text-right pt-1 pb-1">
+                    <a href="" class="sesion">{{ Auth::user()->name }} <span><i class="fas fa-user"></i></span></a>
                     <div class="sesionMenu">
                         <ul class="ulSesion mb-0">
                             <li><a href="" class="Asesion"><i class="fas fa-pencil-alt"></i> Mi perfil</a></li>

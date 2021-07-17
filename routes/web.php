@@ -45,10 +45,14 @@ Route::post('Edit/product', 'ProductController@edit')->name('edit.product');
 
 Route::post('product/elimina', 'ProductController@destroy')->name('product.elimina');
 
-Route::get('api/product/name', 'ProductController@busquedaNombre')->name('productos.nombre');
-
 Route::get('auth/register', 'HomeController@registro')->name('register');
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-// {id}&{cantidad}
+Route::get('api/productos/busqueda', 'ProductController@busqueda')->name('api.productos');
+
+Route::post('decuenta/stock', 'ProductController@descuenta')->name('descuenta.stock');
+
+Route::get('orden/nueva', 'OrderController@store')->name('order.new');
+
+Route::put('venta/guardada', 'ProductController@venta')->name('venta.guardada');

@@ -14,10 +14,6 @@ $('.close').on('click', function(){
     $('.AddMoreUserModal').removeClass('active');
 });
 
-$('.sesion').on('click', function(e){
-    $('.sesionMenu').slideToggle(20);
-    e.preventDefault();
-});
 // generar codigo de barra nuevo aleatorio
 
 $('.AddMoreCode').on('click', function(){

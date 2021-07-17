@@ -3,7 +3,7 @@
         <div class="modal-content modalBusquedaNombre">
             <div class="modal-body pt-4 pb-4">
                 <div class="formSearcName">
-                    <form action="{{route('productos.nombre')}}" method="GET" class="text-center searchNameProduct">
+                    <form action="{{route('api.productos')}}" method="get" class="text-center searchNameProduct">
                         @csrf
                         @method('GET')
                         <input type="text" name="name" class="nameSearch" placeholder="Nombre del producto">

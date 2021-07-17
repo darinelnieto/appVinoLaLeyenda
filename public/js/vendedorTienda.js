@@ -2,50 +2,76 @@ $('.sesion').on('click', function(e){
     $('.sesionMenu').slideToggle(20);
     e.preventDefault();
 });
+// Muestra input de cantidades
+$('.cantidadBTN').on('click', function(e){
+    $('.und').animate({'width': 'toggle'});
+    e.preventDefault();
+});
 // ellemento donde cargan los productos enlistados con jquery
-var tbody = document.getElementById('muestraProductos');
-var DBdatos = document.getElementById('dbForm');
 var imprime = document.getElementById('datos');
-
+var ids = [];
 // función ajax para pedir y mostrar datos de los productos que se pretende vender 
 $('.formSearchProductVenta').on('submit', function(e){
     var respuesta = $('.listProduct').val();
+    cantidadProducto();
     $.ajax({
         type:'GET',
-        url:"api/productos",
+        url:"api/productos/busqueda",
         data:{ sku:respuesta },
      }).done(function(res){
          var datos = JSON.stringify(res);
+        //  Se guarda respuesta de la base de datos en localstorage para imprimir el producto
         localStorage.setItem('skuProduct', datos);
-        localStorage.setItem('id'+res[0]['id'], res[0]['sku']);
-        var recuperado = localStorage.getItem('id'+res[0]['id']);
-        enviaDataLocalStorage(recuperado);
+        // Se guarda id en localStorage para recuperarlo en la siguiente l´nea de código y enviarlo al array ids
+        localStorage.setItem('id', res[0]['id']);
+        // se recupera id del producto, se usará para identificar el producto a descontar de la base de datos
+        var idis = localStorage.getItem('id');
+        // cantidades se usará para las cantidades a descontar
+        var cant = localStorage.getItem('unidades');
+        ids.push({'id':idis, 'cantidad':cant});
+        console.log(ids);
         datosStorage();
      });
      $('.formSearchProductVenta')[0].reset();
      e.preventDefault();
 });
+// aumentando las cantidades de los productos
+function cantidadProducto(){
+    $('.cantidad').on('submit', function(e){
+        var cantidadV = $('.und').val();
+        if(cantidadV === ''){
+            cantidadV = 1;
+        }
+        localStorage.setItem('unidades', cantidadV);
+        e.preventDefault();
+    });
+    $('.cantidad').submit();
+    $('.cantidad')[0].reset();
+}
 function datosStorage(){
     var datosLocal = localStorage.getItem('skuProduct');
-    const dataJson = JSON.parse(datosLocal);
-    for(item of dataJson){
-        tbody.innerHTML+=`
-            <tr class="${item.id}" style="height:47px;">
-                <td width="40%" class="pl-3">${item.name}</td>
-                <td width="20%">${item.sku}</td>
-                <td class="formilario${item.sku} text-center" width="6%"><form class="editaCount${item.id}">
-                    
-                    <input type="number" name="sales" class="valor${item.sku}" style="width:100%" value="1">
-                </td>
-                <td width="13%" class="text-left pl-5">${item.price}</td>
-                <td class="total text-left pl-5" width="13%"></td>
-                <td width="20%" class="text-center"><a href="#" class="btn btn-danger delet"><i class="far fa-trash-alt"></i></a></td>
-            </tr>
-        `;
-        delet();
-    }
-    total();
-    aumenta();
+    var cantidad = localStorage.getItem('unidades');
+    var dataJson = JSON.parse(datosLocal);
+        for(item of dataJson){
+            $('#muestraProductos').append(`
+                <tr class="${item.id}" style="height:47px;">
+                    <td>
+                        <form method="post" class="venta${item.id}">
+                            <input type="hidden" class="sku${item.sku}" value="${item.sku}" name="sku">
+                            <input type="hidden" class="sales${item.id}" value="1" name="sales">
+                        </form>
+                    </td>
+                    <td width="40%" class="pl-3">${item.name}</td>
+                    <td width="20%">${item.sku}</td>
+                    <td class="cantidad text-center" width="6%"><input type="hidden" class="unidades"  value="${cantidad}">${cantidad}</td>
+                    <td width="13%" class="text-left pl-5">${item.price}</td>
+                    <td class="total text-left pl-5" width="13%"></td>
+                    <td width="20%" class="text-center"><a href="#" class="btn btn-danger delet"><i class="far fa-trash-alt"></i></a></td>
+                </tr>
+            `);
+            total();
+            delet();
+        }
     operation();
     controllerVenta();
     finalizaventa();
@@ -55,14 +81,13 @@ function finalizaventa(){
     venta = $('.sales'+item.id).val();
     totalCantidad = item.stock - venta;
     $('.stock'+item.id).val(totalCantidad);
-    $('.confirmaVenta').on('click', function(){
-    });
 }
 function total(){
-    var precioTotal = $('.valor'+item.sku).val();
-    var suma = precioTotal * item.price;
+    var unidad = $('.unidades').val();
+    var suma = unidad * item.price;
     $('.'+item.id+'>.total').html(`${suma}`);
 }
+
 // arrojando valor total de la venta
 function operation(){
        var sum = 0;
@@ -83,22 +108,6 @@ function operation(){
             $('.vuelto').html(`$ ${vueltas}`);
             e.preventDefault();
         });
-}
-
-// aumentando las cantidades de los productos
-function aumenta(){
-    $(this, '.editaCount'+item.id).on('submit', function(e){
-        var cantidad = $('.valor'+item.sku).val();
-        localStorage.setItem('cantidad'+item.id, cantidad);
-        var valor = localStorage.getItem('cantidad'+item.id);
-        $('.valor'+item.sku).replaceWith(`<input type="number" name="sales" class="valor${item.sku}" style="width:100%" value="${valor}">`);
-        total();
-        aumentado = $('.editaCount'+item.id).children().val();
-        enviaDataLocalStorage(aumentado);
-        e.preventDefault();
-        operation();
-        finalizaventa();
-    });
 }
 function delet(){
     $('.delet').on('click', function(e){
@@ -138,7 +147,7 @@ $('.searchNameProduct').on('submit', function(e){
     var nombre = $('.nameSearch').val();
     $.ajax({
         type:'GET',
-        url:"api/product/name",
+        url:"api/productos/busqueda",
         data:{ name:nombre },
     }).done(function(res){
         var dataStore = JSON.stringify(res);
@@ -177,30 +186,45 @@ function agregaProductEncontrado(){
 }
 // finalizar venta
 $('.efectivo').on('click', function(){
-    $('.contentFormFinalVenta').css({'display':'block'}).draggable({cancel: '.contentForm'});
+    $('#formEfectivo').css({'display':'block'}).draggable({cancel: '.contentForm'});
 });
 $('.cierreLink').on('click', function(e){
-    $('.contentFormFinalVenta').css({'display':'none'});
+    $('#formEfectivo').css({'display':'none'});
+    $('.contentFormFinalVentaTC').css({'display':'none'});
 });
-function enviaDataLocalStorage(recuperado, aumentado){
-    if(aumentado === undefined){
-        aumentado = 1;
-    }
-    $.ajax({
-        method:'post',
-        url: 'decuenta/stock',
-        dataType:'json',
-        data:{
-            _token: $("meta[name='csrf-token']").attr("content"),
-            sku:recuperado, 
-            sales:aumentado
-        }
-    });
-}
-// cancelar venta
+$('#tarjeta').on('click', function(e){
+    $('.contentFormFinalVentaTC').css({'display':'block'}).draggable({cancel: '.contentForm'});
+    e.preventDefault();
+});
 $('.cancelarVenta').on('click', function(e){
     $('.tbodyVentas').children().remove();
     $(this).parent().parent().css({'display':'none'});
     localStorage.clear();
+    ids.pop();
     e.preventDefault();
+});
+
+// confirma venta, descuenta productos vendidos en base de datos
+$('.confirmaVenta').on('click', function(e){
+    for(elem of ids){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+            });
+        $.ajax({
+            url:'venta/guardada',
+            method:'PUT',
+            data:{
+                id:elem.id,
+                sales:elem.cantidad
+            }
+        });
+    }
+    e.preventDefault();
+    ids.pop();
+    $('.tbodyVentas').children().remove();
+    $('.pieTabla').css({'display':'none'});
+    $('.contentFormFinalVentaTC').css({'display':'none'});
+    $('#formEfectivo').css({'display':'none'});
 });

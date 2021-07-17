@@ -20,6 +20,10 @@
                     @method('GET')
                     <input type="tel" name="sku" class="listProduct">
                 </form>
+                <form class="cantidad">
+                    <input type="number" name="cantidad" class="und" style="width:40px">
+                </form>
+                <a href="" class="cantidadBTN">Cantidad</a>
             </div>
             @include('VendedorPV.plantillaVP.busquedaPorNombre')
             <div class="contentTbody mt-2">
@@ -51,6 +55,4 @@
         </div>
     </div>
 </div>
-<div id="dbForm"></div>
-<div id="datos"></div>
 @endsection

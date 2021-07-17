@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\paginate;
+use App\Order;
 
 class ProductController extends Controller
 {
@@ -75,22 +76,17 @@ class ProductController extends Controller
 
     public function busqueda(Request $request){
         if($request->ajax()){
-            $producto = Product::where('sku', $request->sku)->get();
+            $producto =  Product::where('sku', $request->sku)->orWhere('name', $request->name)->get();
             return response()->json($producto);
         }
     }
-
-    public function busquedaNombre(Request $request){
+    public function venta(Request $request){
         if($request->ajax()){
-            $productName = Product::where('name', $request->name)->get();
-            return response()->json($productName);
-        }
-    }
+            $descuenta = Product::find($request->id);
+            $descuenta->id = $request->id;
+            $descuenta->sales = $descuenta->sales + $request->sales;
+            $descuenta->stock = $descuenta->stock - $request->sales;
 
-    public function descuenta(Request $request){    
-        if($request->ajax()){
-            $descuenta = Product::find($request['sku']);
-            $descuenta->sales = $request['sales'];
             $descuenta->save();
         }
     }
