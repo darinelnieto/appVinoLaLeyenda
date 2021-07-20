@@ -10,7 +10,7 @@
     <title>aplicación de control y ventas</title>
 </head>
 <body>
-    <header class="headerAppAdmin pt-3">
+    <header class="headerAppAdmin">
         <div class="menu">
             <a href="" class="barMenu"><i class="fa fa-bars"></i></a>
         </div>
